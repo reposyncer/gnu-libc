@@ -2259,3 +2259,4 @@ GLIBC_2.40 getcontext F
 GLIBC_2.40 makecontext F
 GLIBC_2.40 setcontext F
 GLIBC_2.40 swapcontext F
+GLIBC_2.41 mseal F
