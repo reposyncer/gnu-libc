@@ -29,6 +29,17 @@ Major new features:
   mappings to avoid further change during process execution such as protection
   permissions, unmapping, moving to another location, or shrinking the size.
 
+* On Linux, the loader will memory seal multiple places where the memory is
+  supposed to immutable over program execution: all shared library
+  dependencies from the binary, the binary itself, any preload libraries,
+  any library loaded with dlopen and the RTLD_NODELETE flag, any audit modules,
+  and the loader metadata.
+
+* A new tunable, glibc.rtld.seal, can be used to control the memory sealing
+  with thread different states: disable, where sealing will not be applied,
+  enabled, where any memory sealing failure is ignored; and enforced, where
+  any memory failure terminates the process.  The default is enabled.
+
 Deprecated and removed features, and other changes affecting compatibility:
 
   [Add deprecations, removals and changes affecting compatibility here]
