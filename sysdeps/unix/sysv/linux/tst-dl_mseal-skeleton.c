@@ -1,4 +1,4 @@
-/* Basic tests for sealing.  Static version.
+/* Basic tests for sealing.
    Copyright (C) 2024 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
 
@@ -198,7 +198,7 @@ handle_restart (void)
 
   /* Also check if all the expected sealed maps were found.  */
   for (int i = 0; i < array_length (expected_sealed_libs); i++)
-    if (!found_expected[i])
+    if (expected_sealed_libs[i][0] && !found_expected[i])
       FAIL_EXIT1 ("expected VMA %s not sealed\n", expected_sealed_libs[i]);
 
   return 0;
@@ -239,7 +239,7 @@ do_test (int argc, char *argv[])
   spargv[i] = NULL;
 
   char *envvarss[4];
-  envvarss[0] = (char *) "GLIBC_TUNABLES=glibc.rtld.seal=2";
+  envvarss[0] = (char *) "GLIBC_TUNABLES=glibc.rtld.seal=" GLIBC_RTLD_SEAL;
 #ifndef TEST_STATIC
   envvarss[1] = (char *) "LD_PRELOAD=" LIB_PRELOAD;
   envvarss[2] = (char *) "LD_AUDIT=" LIB_AUDIT,

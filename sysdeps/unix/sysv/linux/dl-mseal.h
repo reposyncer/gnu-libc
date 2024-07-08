@@ -25,5 +25,3 @@
    Return 0 in case of success or a negative value otherwise (a negative
    errno).  */
 int _dl_mseal (void *addr, size_t len) attribute_hidden;
-
-#define SUPPORT_MSEAL lt_seal_toseal
